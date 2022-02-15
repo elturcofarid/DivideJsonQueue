@@ -25,8 +25,8 @@ public class MessageSender {
 	@Autowired
 	private Gson gson;
 
-	public void send(String message) {
-			this.template.convertAndSend(queue.getName(), message);
+	public void send(String message, String queue) {
+		this.template.convertAndSend(queue, message);
 	}
 
 }

@@ -4,8 +4,9 @@ import java.util.List;
 
 public class DataJson {
 
+    public Object data;
 
-    public List<Object> data;
+    public List<Object> lista;
 
     public String queue;
 
@@ -17,11 +18,19 @@ public class DataJson {
         this.queue = queue;
     }
 
-    public List<Object> getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(List<Object> data) {
+    public List<Object> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Object> lista) {
+        this.lista = lista;
+    }
+
+    public void setData(Object data) {
         this.data = data;
     }
 }
