@@ -6,6 +6,16 @@ public class DataResponse {
 
     public Object destinatario;
 
+    public boolean ultimo;
+
+    public boolean isUltimo() {
+        return ultimo;
+    }
+
+    public void setUltimo(boolean ultimo) {
+        this.ultimo = ultimo;
+    }
+
     public Object getData() {
         return data;
     }

@@ -50,10 +50,12 @@ import java.util.Date;
         DataJson data = gson.fromJson(in, DataJson.class);
 
 
-        for (Object d : data.lista ){
+        for (int i = 0 ; i < data.getLista().size(); i++){
+            Object d = data.getLista().get(i);
             DataResponse response = new DataResponse();
             response.data = data.data;
             response.destinatario = d;
+            response.setUltimo(data.getLista().size() -1 == i ? true : false);
             sender.send(gson.toJson(response), data.queue);
         }
         Date d2 = new Date();
