@@ -13,7 +13,8 @@
         { 
           "data":  { .... },
           "lista": [    { .... }  ],
-    "queue": "colafinal"
+    "queue": "colafinal",
+    "agrupador": 4
     },
     "queue": "colafinal"
 }

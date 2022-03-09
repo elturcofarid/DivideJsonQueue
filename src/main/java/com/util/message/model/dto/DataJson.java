@@ -10,6 +10,16 @@ public class DataJson {
 
     public String queue;
 
+    public int agrupador;
+
+    public int getAgrupador() {
+        return agrupador;
+    }
+
+    public void setAgrupador(int agrupador) {
+        this.agrupador = agrupador;
+    }
+
     public String getQueue() {
         return queue;
     }

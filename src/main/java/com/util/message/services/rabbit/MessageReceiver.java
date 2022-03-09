@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Component
     public class MessageReceiver {
@@ -49,14 +51,30 @@ import java.util.Date;
 
         DataJson data = gson.fromJson(in, DataJson.class);
 
+        int agrupador = data.agrupador>0 ? data.getAgrupador() : 1;
+
+        List<Object> listaAgrupada = new ArrayList<>();
+        int cont =0;
 
         for (int i = 0 ; i < data.getLista().size(); i++){
+
+
             Object d = data.getLista().get(i);
             DataResponse response = new DataResponse();
             response.data = data.data;
             response.destinatario = d;
             response.setUltimo(data.getLista().size() -1 == i ? true : false);
-            sender.send(gson.toJson(response), data.queue);
+
+            listaAgrupada.add(response);
+            cont++;
+
+            if (agrupador == cont || data.getLista().size() -1 == i){
+                sender.send(gson.toJson(listaAgrupada), data.queue);
+                listaAgrupada.clear();
+                cont=0;
+            }
+
+
         }
         Date d2 = new Date();
 
