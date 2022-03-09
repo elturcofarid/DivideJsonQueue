@@ -65,13 +65,19 @@ import java.util.List;
             response.destinatario = d;
             response.setUltimo(data.getLista().size() -1 == i ? true : false);
 
+
+            if  (agrupador > 1){
             listaAgrupada.add(response);
             cont++;
 
-            if (agrupador == cont || data.getLista().size() -1 == i){
-                sender.send(gson.toJson(listaAgrupada), data.queue);
-                listaAgrupada.clear();
-                cont=0;
+                if (agrupador == cont || data.getLista().size() -1 == i){
+                    sender.send(gson.toJson(listaAgrupada), data.queue);
+                    listaAgrupada.clear();
+                    cont=0;
+                }
+            }
+            else{
+                sender.send(gson.toJson(response), data.queue);
             }
 
 
